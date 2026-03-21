@@ -137,8 +137,18 @@ const Battle = {
       }
 
       if (remaining <= 0) {
-        // Time's up - wrong answer
-        this.onWrongAnswer();
+        // Time's up - same as wrong answer
+        this.isProcessing = true;
+        this.stopTimer();
+        // Disable all buttons and show correct
+        const btns = document.querySelectorAll('.answer-btn');
+        btns.forEach((btn, i) => {
+          if (this.answers[i] === this.correctAnswer) {
+            btn.classList.add('btn-correct');
+          }
+          btn.disabled = true;
+        });
+        this.onTimerExpired();
         return;
       }
 
@@ -308,6 +318,28 @@ const Battle = {
 
     document.getElementById('result-pokemon-img').style.display = 'none';
     document.getElementById('result-text').textContent = 'Nevadí, zkus to znovu!';
+  },
+
+  // === TIMER EXPIRED ===
+  onTimerExpired() {
+    this.playerHp = Math.max(0, this.playerHp - 20);
+
+    const hpFill = document.getElementById('battle-player-hp');
+    hpFill.style.width = this.playerHp + '%';
+    this.updateHpColor(hpFill, this.playerHp);
+
+    const playerImg = document.getElementById('battle-player-img');
+    playerImg.classList.add('damage');
+    setTimeout(() => playerImg.classList.remove('damage'), 500);
+
+    if (this.playerHp <= 0) {
+      setTimeout(() => this.onBattleLose(), 800);
+    } else {
+      setTimeout(() => {
+        this.isProcessing = false;
+        this.nextQuestion();
+      }, 1500);
+    }
   },
 
   // === RESULT CONTINUE ===
