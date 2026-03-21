@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>PokéCalc</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- START SCREEN - Výběr startéra -->
+    <div id="screen-start" class="screen">
+      <div class="screen-content">
+        <h1 class="game-title">PokéCalc</h1>
+        <p class="subtitle">Vyber si svého prvního Pokémona!</p>
+        <div class="starter-grid">
+          <div class="starter-card" data-pokemon="1">
+            <img src="1_bulbasaur.png" alt="Bulbasaur" class="pokemon-img">
+            <span class="starter-name">Bulbasaur</span>
+          </div>
+          <div class="starter-card" data-pokemon="4">
+            <img src="4_charmander.png" alt="Charmander" class="pokemon-img">
+            <span class="starter-name">Charmander</span>
+          </div>
+          <div class="starter-card" data-pokemon="7">
+            <img src="7_squirtle.png" alt="Squirtle" class="pokemon-img">
+            <span class="starter-name">Squirtle</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MENU SCREEN -->
+    <div id="screen-menu" class="screen">
+      <div class="screen-content">
+        <h2 class="menu-title">PokéCalc</h2>
+        <div class="active-pokemon-display">
+          <img id="menu-pokemon-img" src="" alt="" class="pokemon-img pokemon-img-large">
+          <div class="pokemon-info">
+            <span id="menu-pokemon-name" class="pokemon-name"></span>
+            <span id="menu-max-badge" class="max-badge" style="display:none">MAX</span>
+          </div>
+          <div class="exp-bar-container">
+            <label class="exp-label">EXP</label>
+            <div class="exp-bar">
+              <div id="menu-exp-fill" class="exp-fill"></div>
+            </div>
+            <span id="menu-exp-text" class="exp-text"></span>
+          </div>
+        </div>
+        <div class="stats-area">
+          <div class="stat-item">
+            <span class="stat-label">Chyceno celkem</span>
+            <span id="menu-total-caught" class="stat-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Pokémonů ve týmu</span>
+            <span id="menu-team-count" class="stat-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Generace</span>
+            <span id="menu-gens" class="stat-value">1</span>
+          </div>
+        </div>
+        <div class="menu-buttons">
+          <button id="btn-battle" class="btn btn-red">Bojovat!</button>
+          <button id="btn-pokedex" class="btn btn-blue">Pokédex</button>
+          <button id="btn-reset" class="btn btn-small btn-yellow">Reset hry</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BATTLE SCREEN -->
+    <div id="screen-battle" class="screen">
+      <div class="screen-content battle-content">
+        <!-- Timer -->
+        <div class="timer-bar">
+          <div id="battle-timer-fill" class="timer-fill"></div>
+        </div>
+
+        <!-- Battle field -->
+        <div class="battle-field">
+          <!-- Enemy -->
+          <div class="enemy-area">
+            <span id="battle-enemy-name" class="battle-pokemon-name"></span>
+            <div class="hp-bar">
+              <div id="battle-enemy-hp" class="hp-fill"></div>
+            </div>
+            <img id="battle-enemy-img" src="" alt="" class="pokemon-img pokemon-img-battle enemy-img">
+          </div>
+
+          <!-- VS -->
+          <div class="vs-text">VS</div>
+
+          <!-- Player -->
+          <div class="player-area">
+            <img id="battle-player-img" src="" alt="" class="pokemon-img pokemon-img-battle player-img">
+            <span id="battle-player-name" class="battle-pokemon-name"></span>
+            <div class="hp-bar">
+              <div id="battle-player-hp" class="hp-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question -->
+        <div class="question-area">
+          <div id="battle-question" class="question-text"></div>
+          <div id="battle-answers" class="answer-grid">
+            <button class="answer-btn btn" data-index="0"></button>
+            <button class="answer-btn btn" data-index="1"></button>
+            <button class="answer-btn btn" data-index="2"></button>
+          </div>
+        </div>
+
+        <!-- Battle result overlay -->
+        <div id="battle-result-overlay" class="battle-result-overlay" style="display:none">
+          <div class="result-content">
+            <h2 id="result-title" class="result-title"></h2>
+            <img id="result-pokemon-img" src="" alt="" class="pokemon-img pokemon-img-large" style="display:none">
+            <p id="result-text" class="result-text"></p>
+            <button id="result-btn" class="btn btn-green">Pokračovat</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POKEDEX SCREEN -->
+    <div id="screen-pokedex" class="screen">
+      <div class="screen-content">
+        <div class="pokedex-header">
+          <button id="btn-pokedex-back" class="btn btn-small btn-back">&larr; Zpět</button>
+          <h2 class="pokedex-title">Pokédex</h2>
+        </div>
+        <div id="pokedex-tabs" class="gen-tabs"></div>
+        <div id="pokedex-grid" class="pokedex-grid"></div>
+      </div>
+    </div>
+
+    <!-- EVOLUTION SCREEN -->
+    <div id="screen-evolution" class="screen">
+      <div class="screen-content evolution-content">
+        <h2 class="evolution-title">Evoluce!</h2>
+        <div class="evolution-display">
+          <div class="evolution-glow"></div>
+          <img id="evo-image" src="" alt="" class="pokemon-img pokemon-img-evolution">
+        </div>
+        <p id="evo-text" class="evolution-text"></p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/pokemon-data.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/battle.js"></script>
+  <script src="js/pokedex.js"></script>
+  <script src="js/evolution.js"></script>
+</body>
+</html>
