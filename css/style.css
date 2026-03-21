@@ -147,6 +147,7 @@ button {
   object-fit: contain;
   image-rendering: pixelated;
   transition: filter 0.3s ease;
+  flex-shrink: 0;
 }
 
 .pokemon-img.silhouette {
@@ -478,7 +479,10 @@ button {
   justify-content: flex-start;
   gap: 0;
   padding: 0.5rem;
-  overflow: hidden;
+}
+
+#screen-battle .screen-content {
+  max-width: 100%;
 }
 
 /* Battle – Timer */
@@ -504,7 +508,6 @@ button {
   gap: 0.75rem;
   align-self: flex-end;
   padding: 0.5rem;
-  max-width: 80%;
 }
 
 .enemy-area .pokemon-info,
@@ -535,7 +538,6 @@ button {
   gap: 0.75rem;
   align-self: flex-start;
   padding: 0.5rem;
-  max-width: 80%;
 }
 
 .player-area .pokemon-info,
@@ -1084,13 +1086,17 @@ button {
   }
 
   .screen {
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 2rem;
   }
 
   .screen-content {
-    max-width: 650px;
+    max-width: 850px;
+  }
+
+  #screen-battle .screen-content {
+    max-width: 100%;
   }
 
   .answer-btn {
@@ -1108,7 +1114,7 @@ button {
   .battle-info,
   .enemy-area .battle-info,
   .player-area .battle-info {
-    min-width: 180px;
+    min-width: 200px;
   }
 
   .hp-bar {
@@ -1140,6 +1146,60 @@ button {
 
   .battle-result-overlay {
     justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   Responsive – Large Desktop (1024px+)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .screen {
+    max-width: 1100px;
+  }
+
+  .screen-content {
+    max-width: 1000px;
+  }
+
+  .enemy-area .pokemon-img,
+  .player-area .pokemon-img,
+  .pokemon-img-battle {
+    width: 180px;
+    height: 180px;
+  }
+
+  .battle-info,
+  .enemy-area .battle-info,
+  .player-area .battle-info {
+    min-width: 250px;
+  }
+
+  .hp-bar {
+    height: 24px;
+    border-radius: 12px;
+  }
+
+  .hp-fill {
+    border-radius: 12px;
+  }
+
+  .battle-pokemon-name,
+  .enemy-area .battle-pokemon-name,
+  .player-area .battle-pokemon-name {
+    font-size: 1.3rem;
+  }
+
+  .answer-btn {
+    min-height: 100px;
+    font-size: 2.5rem;
+  }
+
+  .question-area .question-text {
+    font-size: 3.2rem;
+  }
+
+  .pokedex-grid {
+    grid-template-columns: repeat(8, 1fr);
   }
 }
 
