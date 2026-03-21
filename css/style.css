@@ -1010,7 +1010,7 @@ button {
     padding: 1.5rem;
   }
 
-  #screen-start .title {
+  .game-title {
     font-size: 3rem;
   }
 
@@ -1029,7 +1029,7 @@ button {
   }
 
   .active-pokemon-display {
-    max-width: 380px;
+    max-width: 420px;
     padding: 2rem;
   }
 
@@ -1039,16 +1039,20 @@ button {
   }
 
   .menu-buttons {
-    max-width: 380px;
+    max-width: 420px;
   }
 
   .question-area .question-text {
     font-size: 2.4rem;
   }
 
+  .answer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .answer-btn {
-    min-height: 64px;
-    font-size: 1.6rem;
+    min-height: 80px;
+    font-size: 2rem;
   }
 
   .pokedex-grid {
@@ -1080,9 +1084,45 @@ button {
   }
 
   .screen {
-    max-width: 500px;
+    max-width: 700px;
     margin: 0 auto;
     padding: 2rem;
+  }
+
+  .screen-content {
+    max-width: 650px;
+  }
+
+  .answer-btn {
+    min-height: 90px;
+    font-size: 2.2rem;
+  }
+
+  .enemy-area .pokemon-img,
+  .player-area .pokemon-img,
+  .pokemon-img-battle {
+    width: 150px;
+    height: 150px;
+  }
+
+  .battle-info,
+  .enemy-area .battle-info,
+  .player-area .battle-info {
+    min-width: 180px;
+  }
+
+  .hp-bar {
+    height: 20px;
+  }
+
+  .battle-pokemon-name,
+  .enemy-area .battle-pokemon-name,
+  .player-area .battle-pokemon-name {
+    font-size: 1.1rem;
+  }
+
+  .question-area .question-text {
+    font-size: 2.8rem;
   }
 
   .pokedex-grid {
@@ -1099,7 +1139,6 @@ button {
   }
 
   .battle-result-overlay {
-    /* Center the overlay content within the max-width column */
     justify-content: center;
   }
 }
