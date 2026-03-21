@@ -78,11 +78,6 @@
     <!-- BATTLE SCREEN -->
     <div id="screen-battle" class="screen">
       <div class="screen-content battle-content">
-        <!-- Timer -->
-        <div class="timer-bar">
-          <div id="battle-timer-fill" class="timer-fill"></div>
-        </div>
-
         <!-- Battle field -->
         <div class="battle-field">
           <!-- Enemy -->
@@ -96,8 +91,12 @@
             <img id="battle-enemy-img" src="" alt="" class="pokemon-img pokemon-img-battle enemy-img">
           </div>
 
-          <!-- VS -->
-          <div class="vs-text">VS</div>
+          <!-- Timer in middle (replaces VS) -->
+          <div class="battle-timer-center">
+            <div class="timer-bar">
+              <div id="battle-timer-fill" class="timer-fill"></div>
+            </div>
+          </div>
 
           <!-- Player -->
           <div class="player-area">
