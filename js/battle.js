@@ -9,7 +9,7 @@ const Battle = {
     answers: [],
     timer: null,
     timerStart: null,
-    timerDuration: 10000, // 10 seconds
+    timerDuration: 15000, // 15 seconds
     animationFrame: null,
     isProcessing: false, // prevent multiple clicks
     pendingEvolution: null,
