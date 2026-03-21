@@ -507,14 +507,17 @@ button {
   max-width: 80%;
 }
 
-.enemy-area .pokemon-info {
+.enemy-area .pokemon-info,
+.enemy-area .battle-info {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   min-width: 120px;
+  flex: 1;
 }
 
-.enemy-area .pokemon-name {
+.enemy-area .pokemon-name,
+.enemy-area .battle-pokemon-name {
   font-size: 0.9rem;
   font-weight: 700;
   text-transform: capitalize;
@@ -535,14 +538,17 @@ button {
   max-width: 80%;
 }
 
-.player-area .pokemon-info {
+.player-area .pokemon-info,
+.player-area .battle-info {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   min-width: 120px;
+  flex: 1;
 }
 
-.player-area .pokemon-name {
+.player-area .pokemon-name,
+.player-area .battle-pokemon-name {
   font-size: 0.9rem;
   font-weight: 700;
   text-transform: capitalize;
@@ -1135,6 +1141,15 @@ button {
   font-weight: 700;
   text-transform: capitalize;
   display: block;
+}
+
+/* Battle info wrapper (name + HP bar) */
+.battle-info {
+  flex: 1;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 /* Pokemon image sizes */
