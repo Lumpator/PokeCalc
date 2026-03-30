@@ -85,8 +85,8 @@ const Battle = {
     nextQuestion() {
         if (this.isProcessing) return;
 
-        const a = Math.floor(Math.random() * 10) + 1;
-        const b = Math.floor(Math.random() * 10) + 1;
+        const a = Math.floor(Math.random() * 3) + 1; // 1-3 
+        const b = Math.floor(Math.random() * 10) + 1; // 1-10
         this.correctAnswer = a * b;
 
         // Generate 3 answers: 1 correct + 2 wrong
