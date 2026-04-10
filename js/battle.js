@@ -85,7 +85,8 @@ const Battle = {
     nextQuestion() {
         if (this.isProcessing) return;
 
-        const a = Math.floor(Math.random() * 3) + 1; // 1-3 
+        const max = (Game.state && Game.state.maxNumber) || 10;
+        const a = Math.floor(Math.random() * max) + 1; // 1-max
         const b = Math.floor(Math.random() * 10) + 1; // 1-10
         this.correctAnswer = a * b;
 
@@ -110,6 +111,8 @@ const Battle = {
     // === GENERATE ANSWERS ===
     generateAnswers(correct) {
         const answers = [correct];
+        const max = (Game.state && Game.state.maxNumber) || 10;
+        const upperBound = max * 10;
 
         while (answers.length < 3) {
             // Generate plausible wrong answer
@@ -128,13 +131,13 @@ const Battle = {
                     (Math.random() < 0.5 ? factor * 10 : -factor * 10);
             } else {
                 // Random from multiplication table range
-                const ra = Math.floor(Math.random() * 10) + 1;
+                const ra = Math.floor(Math.random() * max) + 1;
                 const rb = Math.floor(Math.random() * 10) + 1;
                 wrong = ra * rb;
             }
 
             // Ensure valid and unique
-            if (wrong > 0 && wrong <= 100 && !answers.includes(wrong)) {
+            if (wrong > 0 && wrong <= upperBound && !answers.includes(wrong)) {
                 answers.push(wrong);
             }
         }

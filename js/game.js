@@ -13,7 +13,8 @@ const Game = {
       activePokemonIdx: 0,    // index in ownedPokemon
       totalCaught: 0,         // total catches (including duplicates, for gen unlock)
       pokedex: [],            // all IDs ever owned (unique)
-      started: false
+      started: false,
+      maxNumber: 10           // upper bound for multiplication table (3–10)
     };
   },
 
@@ -194,6 +195,12 @@ const Game = {
     document.getElementById('menu-total-caught').textContent = this.state.totalCaught;
     document.getElementById('menu-team-count').textContent = this.state.ownedPokemon.length;
     document.getElementById('menu-gens').textContent = this.getUnlockedGens().join(', ');
+
+    // Max number selector
+    const maxNumSelect = document.getElementById('select-max-number');
+    if (maxNumSelect) {
+      maxNumSelect.value = this.state.maxNumber || 10;
+    }
   },
 
   // === INITIALIZATION ===
@@ -228,6 +235,15 @@ const Game = {
     document.getElementById('result-btn').addEventListener('click', () => {
       Battle.onResultContinue();
     });
+
+    // Bind max number selector
+    const maxNumSelect = document.getElementById('select-max-number');
+    if (maxNumSelect) {
+      maxNumSelect.addEventListener('change', () => {
+        this.state.maxNumber = parseInt(maxNumSelect.value);
+        this.save();
+      });
+    }
 
     // Show correct screen
     if (hasState && this.state.started) {
